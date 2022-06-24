@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;500&display=swap");
+.nav-style {
+  font-weight: bold;
+  background-color: #939df7 !important;
+}
+div.header-text a {
+  color: #480bf4 !important;
+  font-weight: bolder;
+}
+.register {
+  width: 50% !important;
+  margin: auto;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin-top: 40vh;
+  justify-content: center;
+}
+@media screen and (max-width: 576px) {
+  .register {
+    width: 80% !important;
+    margin: auto;
+  }
+}
+body {
+  background-color: antiquewhite;
+}

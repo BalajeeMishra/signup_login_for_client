@@ -1,0 +1,133 @@
+<%- include("./layouts/header"); -%>
+
+    <div class="container  mt-4 register">
+        <% if(typeof detail[0] !='undefined' ){ %>
+            <h2 class="page-title">
+                Updated Details
+            </h2>
+            <% } else{ %>
+                <h2 class="page-title">
+                    <%=name %> Add your detail,
+                </h2>
+                <% } %>
+
+                    <form method="post" action="/detail/addmoreinformation" class="needs-validation" nonvalidate>
+
+                        <div class="form-group mb-3">
+                            <label for="age" class="form-label">Age</label>
+
+                            <!-- <input type="text" name="age" class="form-control" id="age" placeholder="Age" size="3"
+                                maxlength="3" class="form-control"
+                                value="" required> -->
+                            <input type="number" name="age" class="form-control" id="age" placeholder="Age" size="3"
+                                maxlength="3" class="form-control"
+                                value="<%= typeof detail[0] != 'undefined' ?  detail[0].age : '' %>" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="gender" class="form-label">Gender</label><br>
+
+                            <% if(typeof detail[0]==='undefined' ){%>
+                                <input type="radio" name="gender" id="gender" value="male" class=""
+                                    style="margin-left: 10px;">
+                                Male
+                                <input type="radio" name="gender" id="gender" value="Female" class=""
+                                    style="margin-left: 10px;">
+                                Female
+                                <input type="radio" name="gender" id="gender" value="other" class=""
+                                    style="margin-left: 10px;">
+                                Prefer not to say
+                                <% } %>
+
+                                    <% if(typeof detail[0] !='undefined' ){ %>
+                                        <% if(detail[0].gender==="male" ) {%>
+                                            <input type="radio" name="gender" id="gender" value="male" class=""
+                                                checked="checked" style="margin-left: 10px;">
+                                            Male
+
+                                            <% } else{%>
+                                                <input type="radio" name="gender" id="gender" value="male" class=""
+                                                    style="margin-left: 10px;">
+                                                Male
+                                                <% } %>
+
+                                                    <% if(detail[0].gender==="female" ) {%>
+                                                        <input type="radio" name="gender" id="gender" value="female"
+                                                            style="margin-left: 10px;" checked="checked">
+                                                        Female
+                                                        <%} else{%>
+                                                            <input type="radio" name="gender" id="gender" value="female"
+                                                                class="" style="margin-left: 10px;">
+                                                            Female
+                                                            <% } %>
+                                                                <% if(detail[0].gender==="other" ) {%>
+                                                                    <input type="radio" name="gender" id="gender"
+                                                                        value="other" style="margin-left: 10px;"
+                                                                        checked="checked">
+                                                                    Prefer
+                                                                    not to
+                                                                    say
+
+                                                                    <%}else{%>
+                                                                        <input type="radio" name="gender" id="gender"
+                                                                            value="other" class=""
+                                                                            style="margin-left: 10px;">
+                                                                        Not prefer to say
+                                                                        <% } %>
+
+                                                                            <div class="valid-feedback">
+                                                                                Looks good!
+                                                                            </div>
+                                                                            <% } %>
+                        </div>
+
+                        <div class="form-group mb-3 mt-3">
+                            <label for="birthday" class="form-label">Date of Birth</label>
+                            <input type="date" class="form-control" id="birthday" name="birthday" value=<%=datePattern
+                                %> required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+
+                            <label for="mobno" class="form-label"> Contact Number </label><br>
+                            <input type="tel" name="mobno" id="mobno" placeholder="e.g : 1231234123" pattern="[0-9]{10}"
+                                maxlength="12" class="form-control"
+                                value="<%= typeof detail[0] != 'undefined' ? detail[0].mobno : '' %>" required />
+
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">Add Detail</button>
+                    </form>
+    </div>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict'
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+
+    </script>
+
+    <%- include("./layouts/footer"); -%>

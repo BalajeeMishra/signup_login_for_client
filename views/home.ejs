@@ -1,0 +1,15 @@
+<%- include("./layouts/header"); -%>
+    <% if(typeof user !='undefined' ) {%>
+
+
+        <div class="text">
+            <h4>Welcome,you information is recorded.</h4>
+        </div>
+        <% } else {%>
+            <div class="text">
+                <h4>Please compelete signup process for getting weekly NewsLetter</h4>
+            </div>
+
+            <% } %>
+
+                <%- include("./layouts/footer"); -%>
